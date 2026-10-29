@@ -1,0 +1,30 @@
+# ==========================================
+# ROBOTS.TXT - RUPEE PLUMBING SOLUTION
+# ==========================================
+
+# Ruhusu crawlers wote (Google, Bing, n.k.) kusoma website
+User-agent: *
+Allow: /
+
+# ===== AI CRAWLERS (Kwa ajili ya ChatGPT, Gemini, Claude, n.k.) =====
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# ===== SITEMAP =====
+# Onyesha mahali sitemap ipo
+Sitemap: https://rupeeplumbing.co.tz/sitemap.xml
