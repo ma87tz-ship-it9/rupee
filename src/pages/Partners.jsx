@@ -1,19 +1,22 @@
 const Partners = () => {
-  // Orodha ya brands kutoka kwenye katalogi yako
-  const partnerList = [
-    "MILANO", 
-    "LESSO", 
-    "ARROW", 
-    "R.A.K", 
-    "Castle ware", 
-    "DARCERAMICA", 
-    "GROHE", 
-    "ROCA", 
-    "KOHLER"
+  // Orodha ya picha za Wadau (Weka kwenye public/images/partners/)
+  const partnerLogos = [
+    '/images/partners/1.jpg',
+    '/images/partners/2.jpg',
+    '/images/partners/3.jpg',
+    '/images/partners/4.jpg',
+    '/images/partners/5.jpg',
+    '/images/partners/6.jpg',
+    '/images/partners/7.jpg',
+    '/images/partners/8.jpg',
+    '/images/partners/9.jpg',
+    '/images/partners/10.jpg',
   ];
 
   return (
     <div className="container" style={{ padding: '60px 0' }}>
+      
+      {/* Kichwa cha Ukurasa */}
       <div style={{ textAlign: 'center', marginBottom: '50px' }}>
         <h2 style={{ color: 'var(--primary-blue)', marginBottom: '15px', fontSize: '32px' }}>
           Our Valued Partners
@@ -24,27 +27,25 @@ const Partners = () => {
         </p>
       </div>
       
-      {/* Grid ya Brands */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '25px' }}>
-        {partnerList.map((brand, index) => (
+      {/* Grid ya Picha za Brands */}
+      <div className="grid-3">
+        {partnerLogos.map((logo, index) => (
           <div 
             key={index} 
             className="product-3d-card"
             style={{ 
-              backgroundColor: '#fff', 
-              padding: '40px 20px', 
-              textAlign: 'center', 
-              borderRadius: '8px', 
-              border: '1px solid #eaeaea',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height: '120px'
+              padding: '20px', 
+              height: '150px', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center' 
             }}
           >
-            <h3 style={{ color: 'var(--primary-blue)', fontSize: '22px', fontWeight: '700', letterSpacing: '1px' }}>
-              {brand}
-            </h3>
+            <img 
+              src={logo} 
+              alt={`Partner ${index + 1}`} 
+              style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} 
+            />
           </div>
         ))}
       </div>

@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import PartnerSlider from './components/PartnerSlider';
 import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
@@ -9,38 +10,26 @@ import Partners from './pages/Partners';
 import Projects from './pages/Projects';
 import PlumbingTips from './pages/PlumbingTips';
 import Contact from './pages/Contact';
+import Booking from './pages/Booking'; // Ongeza hii
 import ChatAssistant from './components/ChatAssistant';
 
 function App() {
   return (
     <Router>
-      {/* BACKGROUND ANIMATION: Vitu Vinapita (Light Beams, Particles, Lines) */}
       <div className="app-background">
-        {/* Mistari ya Mwanga (Light Beams) */}
         <div className="light-beam"></div>
         <div className="light-beam-2"></div>
-        
-        {/* Vijidudu (Particles) */}
         <div className="particles-container">
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
+          <div className="particle"></div><div className="particle"></div><div className="particle"></div>
+          <div className="particle"></div><div className="particle"></div><div className="particle"></div>
+          <div className="particle"></div><div className="particle"></div><div className="particle"></div>
           <div className="particle"></div>
         </div>
-
-        {/* Mistari Mipanab (Vertical Lines) */}
         <div className="vertical-line"></div>
         <div className="vertical-line"></div>
         <div className="vertical-line"></div>
       </div>
 
-      {/* MAUDHUI YA WEBSITE (Iko juu ya background) */}
       <div style={{ position: 'relative', zIndex: 1 }}>
         <Header />
         <main style={{ minHeight: '80vh' }}>
@@ -53,11 +42,11 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/tips" element={<PlumbingTips />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/booking" element={<Booking />} /> {/* Ongeza hii */}
           </Routes>
         </main>
+        <PartnerSlider />
         <Footer />
-        
-        {/* AI Chat Assistant - Inaonekana kwenye kila ukurasa */}
         <ChatAssistant />
       </div>
     </Router>

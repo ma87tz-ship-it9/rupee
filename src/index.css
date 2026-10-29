@@ -52,7 +52,9 @@ body {
   box-shadow: 0 6px 20px rgba(10, 37, 64, 0.4);
 }
 
-/* ===== SLIDER ===== */
+/* ========================================= */
+/* ===== SLIDER NA MAANDISHI (HERO) ===== */
+/* ========================================= */
 .hero-slider {
   position: relative;
   height: 70vh;
@@ -73,11 +75,61 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .slide.active {
   opacity: 1;
   z-index: 10;
+}
+
+/* Overlay ya giza ili maandishi yasomeke */
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(10, 37, 64, 0.6), rgba(10, 37, 64, 0.6));
+  z-index: 1;
+}
+
+/* Maudhui (Maandishi + Kitufe) */
+.slide-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.slide.active .slide-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-content h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.slide-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 768px) {
+  .slide-content h1 { font-size: 28px; }
+  .slide-content p { font-size: 15px; }
 }
 
 /* ===== 3D PRODUCT CARDS ===== */
@@ -331,6 +383,53 @@ body {
 }
 
 /* ========================================= */
+/* ===== PARTNER LOGO SLIDER (MDUARA) ===== */
+/* ========================================= */
+.partner-slider-container {
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--white);
+  padding: 30px 0;
+  border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
+  position: relative;
+  z-index: 1;
+}
+
+.partner-slider-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  animation: scrollLeft 40s linear infinite;
+}
+
+.partner-logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border: 2px solid #eaeaea;
+  overflow: hidden;
+}
+
+.partner-logo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.33%); }
+}
+
+/* ========================================= */
 /* ===== RESPONSIVE DESIGN (KWA SIMU) ===== */
 /* ========================================= */
 @media (max-width: 768px) {
@@ -345,4 +444,58 @@ body {
   
   .particle { width: 4px; height: 4px; }
   .light-beam { display: none; }
+  
+  .partner-logo-box {
+    width: 90px;
+    height: 90px;
+    padding: 10px;
+  }
+}
+/* ===== HERO SLIDER WRAPPER (PICHA + KITUFE CHINI) ===== */
+.hero-slider-wrapper {
+  width: 100%;
+  background-color: var(--white);
+}
+
+.hero-slider {
+  position: relative;
+  height: 60vh; /* Punguza urefu kidogo ili kitufe kionekane */
+  min-height: 400px;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--primary-blue);
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 10;
+}
+
+/* Sehemu ya Kitufe Chini ya Picha */
+.book-now-container {
+  text-align: center;
+  padding: 20px 0 30px 0; /* Nafasi juu na chini ya kitufe */
+  background-color: var(--white);
+  width: 100%;
+}
+
+/* Kwenye simu, punguza urefu wa slider */
+@media (max-width: 768px) {
+  .hero-slider {
+    height: 40vh;
+    min-height: 250px;
+  }
 }

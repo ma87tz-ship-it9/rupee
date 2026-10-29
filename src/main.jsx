@@ -3,13 +3,24 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
-// Hii inaficha Loading Screen mara React inapopakia
 const HideLoading = () => {
   useEffect(() => {
-    const loader = document.getElementById('loading-screen');
-    if (loader) {
-      loader.style.display = 'none';
-    }
+    // Subiri sekunde 2.5 (2500ms) kisha ficha loading screen
+    const timer = setTimeout(() => {
+      const loader = document.getElementById('loading-screen');
+      if (loader) {
+        // Ongeza animation ya kufifia (fade out)
+        loader.style.opacity = '0';
+        loader.style.transition = 'opacity 0.5s ease';
+        
+        // Baada ya kufifia, ifute kabisa
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 500);
+      }
+    }, 2500);
+
+    return () => clearTimeout(timer);
   }, []);
   return null;
 };

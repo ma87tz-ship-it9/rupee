@@ -67,23 +67,38 @@
         align-items: center;
         flex-direction: column;
         z-index: 9999;
+        transition: opacity 0.5s ease;
       }
+
+      /* Animation ya Logo Kupumua */
       .loader-logo {
-        width: 80px;
-        margin-bottom: 20px;
-        animation: pulse 1.5s infinite;
+        width: 100px;
+        margin-bottom: 25px;
+        animation: breathe 2s ease-in-out infinite;
       }
+
+      /* Animation ya Maandishi Kuja Taratibu */
       .loader-text {
         font-family: 'Inter', sans-serif;
         color: #0A2540;
-        font-weight: 600;
-        font-size: 18px;
-        letter-spacing: 1px;
+        font-weight: 700;
+        font-size: 22px;
+        letter-spacing: 2px;
+        animation: fadeInText 2s ease-in-out infinite;
       }
-      @keyframes pulse {
-        0% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.1); opacity: 0.7; }
-        100% { transform: scale(1); opacity: 1; }
+
+      /* Keyframes ya Kupumua (Kukua na Kupungua) */
+      @keyframes breathe {
+        0% { transform: scale(1); opacity: 0.8; }
+        50% { transform: scale(1.1); opacity: 1; }
+        100% { transform: scale(1); opacity: 0.8; }
+      }
+
+      /* Keyframes ya Maandishi Kufifia na Kuonekana */
+      @keyframes fadeInText {
+        0% { opacity: 0.5; }
+        50% { opacity: 1; }
+        100% { opacity: 0.5; }
       }
     </style>
   </head>
