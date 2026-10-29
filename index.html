@@ -4,36 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- ===== FAVICON ===== -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-32x32.png" />
     <link rel="apple-touch-icon" href="/favicon-32x32.png" />
 
-    <!-- ===== SEO META TAGS (KWA GOOGLE) ===== -->
+    <!-- SEO Meta Tags -->
     <title>Rupee Plumbing Solution | Genuine Plumbing & Sanitary Materials in Dar es Salaam</title>
-    <meta name="description" content="Rupee Plumbing Solution Company Ltd supplies genuine plumbing and sanitary materials in Kariakoo, Dar es Salaam. We offer PVC, PPR pipes, sanitary ware, surgical sinks, and expert advice for residential and commercial projects." />
-    <meta name="keywords" content="plumbing materials Dar es Salaam, sanitary ware Kariakoo, PVC pipes Tanzania, PPR pipes, surgical sinks, Rupee Plumbing Solution, mabomba Dar es Salaam, vifaa vya bafuni Tanzania" />
+    <meta name="description" content="Rupee Plumbing Solution Company Ltd supplies genuine plumbing and sanitary materials in Kariakoo, Dar es Salaam. We offer PVC, PPR pipes, sanitary ware, surgical sinks, and expert advice." />
+    <meta name="keywords" content="plumbing materials Dar es Salaam, sanitary ware Kariakoo, PVC pipes Tanzania, PPR pipes, surgical sinks, Rupee Plumbing Solution" />
     <meta name="author" content="Rupee Plumbing Solution Company Ltd" />
-    <meta name="robots" content="index, follow" />
-    
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://rupeeplumbing.co.tz" />
 
-    <!-- ===== OPEN GRAPH (KWA WHATSAPP, FACEBOOK, INSTAGRAM) ===== -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://rupeeplumbing.co.tz" />
     <meta property="og:title" content="Rupee Plumbing Solution | Genuine Plumbing Materials" />
-    <meta property="og:description" content="Your trusted partner for high-quality plumbing and sanitary materials in Dar es Salaam. Visit us at Kariakoo, Mbaruku/Nyamwezi Street." />
+    <meta property="og:description" content="Your trusted partner for high-quality plumbing and sanitary materials in Dar es Salaam." />
     <meta property="og:image" content="https://rupeeplumbing.co.tz/images/logo.png" />
-    <meta property="og:site_name" content="Rupee Plumbing Solution" />
 
-    <!-- ===== TWITTER CARD ===== -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Rupee Plumbing Solution | Genuine Plumbing Materials" />
-    <meta name="twitter:description" content="Your trusted partner for high-quality plumbing and sanitary materials in Dar es Salaam." />
-    <meta name="twitter:image" content="https://rupeeplumbing.co.tz/images/logo.png" />
-
-    <!-- ===== SCHEMA.ORG (JSON-LD) - KWA AI NA GOOGLE ===== -->
+    <!-- Schema.org (Kwa AI na Google) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -50,15 +39,7 @@
         "addressCountry": "TZ",
         "postalCode": "21196"
       },
-      "description": "Rupee Plumbing Solution Company Ltd is a leading supplier of genuine plumbing and sanitary materials in Dar es Salaam, Tanzania. We offer PVC, PPR pipes, sanitary ware, surgical sinks, and expert plumbing advice.",
-      "openingHours": "Mo-Sa 08:00-18:00",
-      "sameAs": [
-        "https://www.instagram.com/rupee.plumbing.solutions"
-      ],
-      "founder": {
-        "@type": "Person",
-        "name": "Albert Rupee"
-      },
+      "sameAs": ["https://www.instagram.com/rupee.plumbing.solutions"],
       "developer": {
         "@type": "Organization",
         "name": "MATO MEDIA TZ",
@@ -67,14 +48,54 @@
     }
     </script>
 
-    <!-- ===== GOOGLE FONTS ===== -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
+    <!-- CSS ya Loading Screen -->
+    <style>
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 9999;
+      }
+      .loader-logo {
+        width: 80px;
+        margin-bottom: 20px;
+        animation: pulse 1.5s infinite;
+      }
+      .loader-text {
+        font-family: 'Inter', sans-serif;
+        color: #0A2540;
+        font-weight: 600;
+        font-size: 18px;
+        letter-spacing: 1px;
+      }
+      @keyframes pulse {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.1); opacity: 0.7; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- LOADING SCREEN -->
+    <div id="loading-screen">
+      <img src="/images/logo.png" alt="Loading..." class="loader-logo" />
+      <div class="loader-text">RUPEE PLUMBING</div>
+    </div>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Picha za mwanzo (Hakikisha umeziweka kwenye public/images/)
   const slides = [
     '/images/hero1.jpg',
     '/images/hero2.jpg',
@@ -13,7 +12,7 @@ const HeroSlider = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000); // Badilisha picha kila sekunde 5
+    }, 5000);
     return () => clearInterval(timer);
   }, [slides.length]);
 
