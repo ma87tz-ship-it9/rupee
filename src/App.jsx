@@ -11,7 +11,8 @@ import Projects from './pages/Projects';
 import PlumbingTips from './pages/PlumbingTips';
 import Contact from './pages/Contact';
 import Booking from './pages/Booking';
-import Admin from './pages/Admin'; // Ongeza hii
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
 import ChatAssistant from './components/ChatAssistant';
 
 function App() {
@@ -44,7 +45,8 @@ function App() {
             <Route path="/tips" element={<PlumbingTips />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/booking" element={<Booking />} />
-            <Route path="/admin" element={<Admin />} /> {/* Ongeza hii */}
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admin-dashboard" element={<AdminDashboard />} />
           </Routes>
         </main>
         <PartnerSlider />
