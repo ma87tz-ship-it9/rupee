@@ -10,7 +10,8 @@ import Partners from './pages/Partners';
 import Projects from './pages/Projects';
 import PlumbingTips from './pages/PlumbingTips';
 import Contact from './pages/Contact';
-import Booking from './pages/Booking'; // Ongeza hii
+import Booking from './pages/Booking';
+import Admin from './pages/Admin'; // Ongeza hii
 import ChatAssistant from './components/ChatAssistant';
 
 function App() {
@@ -42,7 +43,8 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/tips" element={<PlumbingTips />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/booking" element={<Booking />} /> {/* Ongeza hii */}
+            <Route path="/booking" element={<Booking />} />
+            <Route path="/admin" element={<Admin />} /> {/* Ongeza hii */}
           </Routes>
         </main>
         <PartnerSlider />
