@@ -24,6 +24,11 @@ export default {
         const type = formData.get('type'); // 'hero' au 'product'
 
         if (!file) return new Response('No image', { status: 400 });
+        
+        // Kagua kama ni JPG/JPEG pekee
+        if (!file.type.includes('jpeg') && !file.type.includes('jpg')) {
+            return new Response('Only JPG/JPEG files are allowed', { status: 400 });
+        }
 
         const fileName = `${type}-${Date.now()}-${file.name}`;
         
@@ -46,14 +51,36 @@ export default {
       }
     }
 
-    // ===== 3. API YA KUSOMA ORODHA YA PICHA =====
+    // ===== 3. API YA KUFUTA PICHA =====
+    if (request.method === 'DELETE' && url.pathname === '/api/delete') {
+        try {
+            const { fileName, type } = await request.json();
+            
+            // Futa kwenye R2
+            await env.R2_BUCKET.delete(fileName);
+            
+            // Futa kwenye KV
+            const currentList = await env.KV_CONFIG.get(type) || '[]';
+            let list = JSON.parse(currentList);
+            list = list.filter(name => name !== fileName);
+            await env.KV_CONFIG.put(type, JSON.stringify(list));
+
+            return new Response(JSON.stringify({ success: true }), { 
+                headers: { 'Content-Type': 'application/json' } 
+            });
+        } catch (err) {
+            return new Response(err.message, { status: 500 });
+        }
+    }
+
+    // ===== 4. API YA KUSOMA ORODHA YA PICHA =====
     if (request.method === 'GET' && url.pathname === '/api/images') {
       const type = url.searchParams.get('type'); // 'hero' au 'product'
       const list = await env.KV_CONFIG.get(type) || '[]';
       return new Response(list, { headers: { 'Content-Type': 'application/json' } });
     }
 
-    // ===== 4. KURUDISHA PICHA KUTOKA R2 =====
+    // ===== 5. KURUDISHA PICHA KUTOKA R2 =====
     if (url.pathname.startsWith('/images/')) {
       const fileName = url.pathname.replace('/images/', '');
       const object = await env.R2_BUCKET.get(fileName);
@@ -64,7 +91,7 @@ export default {
       return new Response(object.body, { headers });
     }
 
-    // ===== 5. KURUDISHA REACT APP =====
+    // ===== 6. KURUDISHA REACT APP =====
     return env.ASSETS.fetch(request);
   },
 };
