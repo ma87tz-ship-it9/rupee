@@ -14,4 +14,4 @@ bucket_name = "rupee-images"
 
 [[kv_namespaces]]
 binding = "KV_CONFIG"
-id = "7c1388a7d51146598d511e56f3966a01"
+id = "7c1388e7d51146598d511e56f3966a01"
