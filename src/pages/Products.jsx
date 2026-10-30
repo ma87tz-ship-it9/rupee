@@ -4,6 +4,9 @@ const Products = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // URL ya umma ya R2 Bucket yako
+  const R2_PUBLIC_URL = 'https://pub-17567c58742b465eb6e01709174ac856.r2.dev';
+
   useEffect(() => {
     fetch('/api/images?type=product')
       .then(res => res.json())
@@ -39,7 +42,7 @@ const Products = () => {
           {images.map((img, index) => (
             <div key={index} className="product-3d-card">
               <img 
-                src={`/r2-images/${img}`} 
+                src={`${R2_PUBLIC_URL}/${img}`} 
                 alt={`Product ${index + 1}`} 
                 className="product-image" 
               />

@@ -8,6 +8,9 @@ const AdminDashboard = () => {
   const [progress, setProgress] = useState(0);
   const navigate = useNavigate();
 
+  // URL ya umma ya R2 Bucket yako
+  const R2_PUBLIC_URL = 'https://pub-17567c58742b465eb6e01709174ac856.r2.dev';
+
   useEffect(() => {
     if (!localStorage.getItem('rupee_admin_token')) {
       navigate('/admin');
@@ -111,7 +114,8 @@ const AdminDashboard = () => {
         <div style={{ display: 'flex', gap: '10px', marginTop: '20px', flexWrap: 'wrap' }}>
           {heroImages.map((img, i) => (
             <div key={i} style={{ position: 'relative' }}>
-                <img src={`/r2-images/${img}`} alt="hero" style={{ width: '100px', height: '60px', objectFit: 'cover', borderRadius: '4px' }} />
+                {/* HAPA NDO TUNABADILISHA KUWA URL KAMILI YA R2 */}
+                <img src={`${R2_PUBLIC_URL}/${img}`} alt="hero" style={{ width: '100px', height: '60px', objectFit: 'cover', borderRadius: '4px' }} />
                 <button onClick={() => handleDelete(img, 'hero')} style={{ position: 'absolute', top: '2px', right: '2px', background: 'red', color: 'white', border: 'none', borderRadius: '50%', width: '20px', height: '20px', cursor: 'pointer', fontSize: '12px' }}>×</button>
             </div>
           ))}
@@ -133,7 +137,8 @@ const AdminDashboard = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))', gap: '10px', marginTop: '20px' }}>
           {productImages.map((img, i) => (
             <div key={i} style={{ position: 'relative' }}>
-                <img src={`/r2-images/${img}`} alt="product" style={{ width: '100%', height: '80px', objectFit: 'cover', borderRadius: '4px' }} />
+                {/* HAPA NDO TUNABADILISHA KUWA URL KAMILI YA R2 */}
+                <img src={`${R2_PUBLIC_URL}/${img}`} alt="product" style={{ width: '100%', height: '80px', objectFit: 'cover', borderRadius: '4px' }} />
                 <button onClick={() => handleDelete(img, 'product')} style={{ position: 'absolute', top: '2px', right: '2px', background: 'red', color: 'white', border: 'none', borderRadius: '50%', width: '20px', height: '20px', cursor: 'pointer', fontSize: '12px' }}>×</button>
             </div>
           ))}

@@ -6,6 +6,9 @@ const HeroSlider = () => {
   const [slides, setSlides] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // URL ya umma ya R2 Bucket yako
+  const R2_PUBLIC_URL = 'https://pub-17567c58742b465eb6e01709174ac856.r2.dev';
+
   // 1. Vuta picha kutoka kwenye API
   useEffect(() => {
     fetch('/api/images?type=hero')
@@ -72,7 +75,7 @@ const HeroSlider = () => {
           <div 
             key={index} 
             className={`slide ${index === currentSlide ? 'active' : ''}`}
-            style={{ backgroundImage: `url(/r2-images/${image})` }}
+            style={{ backgroundImage: `url(${R2_PUBLIC_URL}/${image})` }}
           ></div>
         ))}
       </div>
