@@ -5,7 +5,13 @@ main = "src/worker.js"
 [assets]
 directory = "./dist"
 binding = "ASSETS"
+not_found_handling = "single-page-application"
+run_worker_first = ["/api/*"]
 
 [[r2_buckets]]
 binding = "R2_BUCKET"
 bucket_name = "rupee-images"
+
+[[kv_namespaces]]
+binding = "KV_CONFIG"
+id = "7c1388a7b5114659b0d511e56f3966a01"
