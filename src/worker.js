@@ -80,9 +80,9 @@ export default {
       return new Response(list, { headers: { 'Content-Type': 'application/json' } });
     }
 
-    // ===== 5. KURUDISHA PICHA KUTOKA R2 =====
-    if (url.pathname.startsWith('/images/')) {
-      const fileName = url.pathname.replace('/images/', '');
+    // ===== 5. KURUDISHA PICHA KUTOKA R2 (NJIA MPYA: /r2-images/) =====
+    if (url.pathname.startsWith('/r2-images/')) {
+      const fileName = url.pathname.replace('/r2-images/', '');
       const object = await env.R2_BUCKET.get(fileName);
       if (!object) return new Response('Not found', { status: 404 });
       

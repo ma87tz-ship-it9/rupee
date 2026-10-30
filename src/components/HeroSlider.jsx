@@ -14,7 +14,7 @@ const HeroSlider = () => {
         return res.json();
       })
       .then(data => {
-        console.log("DATA KUTOKA API (HERO):", data); // <-- Hii itatuonyesha kwenye Console
+        console.log("DATA KUTOKA API (HERO):", data);
         setSlides(data);
         setLoading(false);
       })
@@ -72,7 +72,7 @@ const HeroSlider = () => {
           <div 
             key={index} 
             className={`slide ${index === currentSlide ? 'active' : ''}`}
-            style={{ backgroundImage: `url(/images/${image})` }}
+            style={{ backgroundImage: `url(/r2-images/${image})` }}
           ></div>
         ))}
       </div>

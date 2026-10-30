@@ -39,7 +39,7 @@ const Products = () => {
           {images.map((img, index) => (
             <div key={index} className="product-3d-card">
               <img 
-                src={`/images/${img}`} 
+                src={`/r2-images/${img}`} 
                 alt={`Product ${index + 1}`} 
                 className="product-image" 
               />
