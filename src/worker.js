@@ -1,7 +1,32 @@
 export default {
   async fetch(request, env, ctx) {
-    // 1. API ya Ku-upload Picha (POST /api/upload)
-    if (request.method === 'POST' && new URL(request.url).pathname === '/api/upload') {
+    const url = new URL(request.url);
+
+    // 1. ULINZI WA UKURASA WA ADMIN (Basic Authentication)
+    if (url.pathname === '/admin') {
+      const authHeader = request.headers.get('Authorization');
+      
+      // Email na Password (Badilisha password hapa)
+      const adminEmail = 'info@rupeeplumbing.co.tz';
+      const adminPassword = 'Rupee@2026'; // <--- BADILISHA PASSWORD HII
+      
+      // Tengeneza Base64 ya email:password
+      const expectedAuth = 'Basic ' + btoa(`${adminEmail}:${adminPassword}`);
+
+      // Kama hakuna header au si sahihi, omba login
+      if (!authHeader || authHeader !== expectedAuth) {
+        return new Response('Access Denied. Please login.', {
+          status: 401,
+          headers: {
+            'WWW-Authenticate': 'Basic realm="Rupee Admin Panel"',
+            'Content-Type': 'text/plain'
+          }
+        });
+      }
+    }
+
+    // 2. API YA KU-UPLOAD PICHA (POST /api/upload)
+    if (request.method === 'POST' && url.pathname === '/api/upload') {
       try {
         const formData = await request.formData();
         const file = formData.get('image');
@@ -10,18 +35,15 @@ export default {
           return new Response('No image provided', { status: 400 });
         }
 
-        // Tengeneza jina la kipekee kwa ajili ya picha
         const fileName = `${Date.now()}-${file.name}`;
 
-        // Weka picha kwenye R2 Bucket
         await env.R2_BUCKET.put(fileName, file.stream(), {
           httpMetadata: { contentType: file.type },
         });
 
-        // Rudisha URL ya picha
         return new Response(JSON.stringify({ 
           success: true, 
-          url: `/images/${fileName}` // Tutahitaji kuunda route ya kuonyesha picha baadaye
+          url: `/images/${fileName}`
         }), {
           headers: { 'Content-Type': 'application/json' },
         });
@@ -30,8 +52,7 @@ export default {
       }
     }
 
-    // 2. Kurudisha picha zilizopo kwenye R2 (GET /images/:fileName)
-    const url = new URL(request.url);
+    // 3. KURUDISHA PICHA ZILIZOPO KWENYE R2 (GET /images/:fileName)
     if (url.pathname.startsWith('/images/')) {
       const fileName = url.pathname.replace('/images/', '');
       const object = await env.R2_BUCKET.get(fileName);
@@ -45,7 +66,7 @@ export default {
       return new Response(object.body, { headers });
     }
 
-    // 3. Kurudisha React App (static assets)
+    // 4. KURUDISHA REACT APP (static assets)
     return env.ASSETS.fetch(request);
   },
 };
