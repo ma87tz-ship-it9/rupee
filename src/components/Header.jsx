@@ -39,6 +39,11 @@ const Header = () => {
           <Link to="/partners" style={linkStyle(location.pathname === '/partners')} onClick={closeMenu}>Partners</Link>
           <Link to="/projects" style={linkStyle(location.pathname === '/projects')} onClick={closeMenu}>Projects</Link>
           <Link to="/tips" style={linkStyle(location.pathname === '/tips')} onClick={closeMenu}>Tips</Link>
+          
+          {/* Kitufe cha Login */}
+          <Link to="/admin" style={linkStyle(location.pathname === '/admin')} onClick={closeMenu}>Login</Link>
+          
+          {/* Kitufe cha Mawasiliano */}
           <Link to="/contact" className="btn-primary" style={{ padding: '8px 15px', fontSize: '13px', textAlign: 'center' }} onClick={closeMenu}>Contact Us</Link>
         </nav>
       </div>
