@@ -9,13 +9,17 @@ const HeroSlider = () => {
   // 1. Vuta picha kutoka kwenye API
   useEffect(() => {
     fetch('/api/images?type=hero')
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json();
+      })
       .then(data => {
+        console.log("DATA KUTOKA API (HERO):", data); // <-- Hii itatuonyesha kwenye Console
         setSlides(data);
         setLoading(false);
       })
       .catch(err => {
-        console.error("Kosa la kupata picha:", err);
+        console.error("KOSA LA KUPATA PICHA:", err);
         setLoading(false);
       });
   }, []);
@@ -29,7 +33,7 @@ const HeroSlider = () => {
     return () => clearInterval(timer);
   }, [slides.length]);
 
-  // Kama bado inapakia, onyesha nafasi tupu au rangi ya bluu
+  // Kama bado inapakia
   if (loading) {
     return (
       <div className="hero-slider-wrapper">
@@ -45,11 +49,13 @@ const HeroSlider = () => {
     );
   }
 
-  // Kama hakuna picha kabisa kwenye KV, onyesha rangi ya bluu tu
+  // Kama hakuna picha kabisa kwenye KV
   if (slides.length === 0) {
     return (
       <div className="hero-slider-wrapper">
-        <div className="hero-slider" style={{ backgroundColor: 'var(--primary-blue)' }}></div>
+        <div className="hero-slider" style={{ backgroundColor: 'var(--primary-blue)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <p style={{ color: 'white' }}>No hero images uploaded yet.</p>
+        </div>
         <div className="book-now-container">
           <Link to="/booking" className="btn-primary" style={{ padding: '15px 40px', fontSize: '18px' }}>
             Book Now
